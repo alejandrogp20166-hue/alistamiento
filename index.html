@@ -1,3 +1,6 @@
+Aquí tienes el código actualizado con el nuevo enlace del formulario (`[https://forms.gle/NeAMX2ECBbsgNBM67](https://forms.gle/NeAMX2ECBbsgNBM67)`) aplicado en todos los días, manteniendo el diseño moderno, la adaptabilidad para cualquier dispositivo y todos tus enlaces de recursos intactos:
+
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,85 +8,105 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jornada de Alistamiento SENA 2026</title>
     <style>
-        /* --- RESET Y BASE --- */
+        /* --- RESET Y VARIABLES --- */
+        :root {
+            --sena-blue: #00324d;
+            --sena-blue-light: #004b87;
+            --sena-yellow: #ffcc00;
+            --sena-yellow-hover: #e6b800;
+            --bg-color: #f4f6f9;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --shadow-soft: 0 10px 30px rgba(0, 50, 77, 0.08);
+            --shadow-hover: 0 15px 35px rgba(0, 50, 77, 0.12);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
         }
+
         body {
-            background: #f0f2f5;
+            background: var(--bg-color);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 16px;
+            color: var(--text-main);
         }
+
         .app {
             max-width: 1200px;
             width: 100%;
-            background: white;
-            border-radius: 32px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-soft);
             overflow: hidden;
-            transition: all 0.2s;
+            border: 1px solid rgba(226, 232, 240, 0.8);
         }
 
         /* --- TABS --- */
         .tabs {
             display: flex;
             flex-wrap: wrap;
-            background: #004b87;
-            /* Azul SENA */
-            padding: 6px 12px 0 12px;
-            gap: 4px;
-        }
-        .tab-btn {
-            flex: 1 0 auto;
-            min-width: 70px;
-            padding: 14px 12px 12px 12px;
-            background: transparent;
-            border: none;
-            border-radius: 16px 16px 0 0;
-            color: rgba(255, 255, 255, 0.7);
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: 0.25s ease;
-            border-bottom: 3px solid transparent;
-            letter-spacing: 0.3px;
-            text-align: center;
-        }
-        .tab-btn:hover {
-            color: white;
-            background: rgba(255, 255, 255, 0.08);
-        }
-        .tab-btn.active {
-            color: white;
-            background: white;
-            border-bottom: 3px solid #ffcc00;
-            /* amarillo SENA */
-            color: #004b87;
-            border-radius: 16px 16px 0 0;
+            background: var(--sena-blue);
+            padding: 10px 16px 0 16px;
+            gap: 6px;
+            border-bottom: 4px solid var(--sena-yellow);
         }
 
-        /* --- PANELES (placeholders) --- */
+        .tab-btn {
+            flex: 1 1 auto;
+            min-width: 90px;
+            padding: 14px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: none;
+            border-radius: 12px 12px 0 0;
+            color: rgba(255, 255, 255, 0.75);
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+            letter-spacing: 0.3px;
+        }
+
+        .tab-btn:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .tab-btn.active {
+            color: var(--sena-blue);
+            background: #ffffff;
+            font-weight: 700;
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        /* --- PANELES --- */
         .panel {
             display: none;
-            padding: 28px 24px 32px 24px;
-            animation: fade 0.3s ease;
-            background: white;
+            padding: 32px 28px;
+            animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            background: #ffffff;
         }
+
         .panel.active {
             display: block;
         }
-        @keyframes fade {
-            0% {
-                opacity: 0.4;
-                transform: translateY(8px);
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(6px);
             }
-            100% {
+            to {
                 opacity: 1;
                 transform: translateY(0);
             }
@@ -94,248 +117,300 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 28px;
-        }
-        .inicio-titulo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #004b87;
+            gap: 24px;
             text-align: center;
-            line-height: 1.3;
-            margin-bottom: 4px;
-        }
-        .inicio-titulo span {
-            display: block;
-            font-size: 1.1rem;
-            font-weight: 400;
-            color: #3d5a73;
-            margin-top: 6px;
-        }
-        .inicio-container img {
-            width: 100%;
-            max-width: 900px;
-            height: auto;
-            border-radius: 20px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.10);
-            background: #e9ecf0;
-            display: block;
-        }
-        .btn-descargar {
-            background: #004b87;
-            color: white;
-            border: none;
-            padding: 16px 48px;
-            border-radius: 60px;
-            font-weight: 700;
-            font-size: 1.2rem;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0, 75, 135, 0.35);
-            transition: 0.2s;
-            text-decoration: none;
-            display: inline-block;
-            letter-spacing: 0.5px;
-        }
-        .btn-descargar:hover {
-            background: #003366;
-            transform: scale(1.02);
-            box-shadow: 0 6px 20px rgba(0, 75, 135, 0.45);
         }
 
-        /* --- DÍAS (dos columnas) --- */
+        .inicio-titulo {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--sena-blue);
+            line-height: 1.25;
+        }
+
+        .inicio-titulo span {
+            display: block;
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+
+        .inicio-container img {
+            width: 100%;
+            max-width: 850px;
+            height: auto;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-soft);
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-descargar {
+            background: var(--sena-blue-light);
+            color: #ffffff;
+            border: none;
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 75, 135, 0.25);
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-descargar:hover {
+            background: var(--sena-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 75, 135, 0.35);
+        }
+
+        /* --- DÍAS (GRID DOS COLUMNAS) --- */
         .dia-grid {
             display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 28px;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 24px;
         }
-        @media (max-width: 700px) {
+
+        @media (max-width: 850px) {
             .dia-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
         }
 
-        /* columna izquierda: horario */
+        /* Columna Izquierda: Horario */
         .col-horario {
             background: #f8fafc;
-            border-radius: 20px;
-            padding: 20px 20px 16px 20px;
-            border-left: 6px solid #004b87;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            border-left: 5px solid var(--sena-blue-light);
+            border: 1px solid var(--border-color);
+            border-left-width: 5px;
         }
+
         .col-horario h3 {
-            color: #004b87;
-            margin-bottom: 14px;
+            color: var(--sena-blue);
+            margin-bottom: 16px;
             font-size: 1.2rem;
-            border-bottom: 2px dashed #d0d7e2;
-            padding-bottom: 8px;
-        }
-        .horario-item {
-            padding: 10px 0 10px 10px;
-            border-bottom: 1px solid #e6eaef;
+            font-weight: 700;
             display: flex;
-            gap: 12px;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 2px dashed var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .horario-item {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            gap: 14px;
             align-items: baseline;
         }
+
         .horario-item:last-child {
             border-bottom: none;
         }
+
         .hora {
             font-weight: 700;
-            color: #004b87;
-            min-width: 80px;
-            font-size: 0.9rem;
+            color: var(--sena-blue-light);
+            min-width: 90px;
+            font-size: 0.88rem;
+            background: #eef2f6;
+            padding: 4px 8px;
+            border-radius: 6px;
+            text-align: center;
         }
+
         .actividad {
-            color: #1e2a3a;
+            color: var(--text-main);
             font-size: 0.95rem;
             line-height: 1.4;
         }
 
-        /* columna derecha: productos */
+        /* Columna Derecha: Productos */
         .col-productos {
             background: #f8fafc;
-            border-radius: 20px;
-            padding: 20px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            border-radius: var(--radius-md);
+            padding: 24px;
             display: flex;
             flex-direction: column;
-            gap: 18px;
-            border-right: 6px solid #ffcc00;
+            justify-content: space-between;
+            gap: 20px;
+            border: 1px solid var(--border-color);
+            border-right: 5px solid var(--sena-yellow);
         }
+
         .productos-desc {
-            background: white;
-            border-radius: 16px;
-            padding: 18px 18px 12px 18px;
-            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.03);
-            flex: 1;
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+            border: 1px solid var(--border-color);
         }
+
         .productos-desc h3 {
-            color: #004b87;
-            font-size: 1.1rem;
-            margin-bottom: 10px;
+            color: var(--sena-blue);
+            font-size: 1.15rem;
+            margin-bottom: 12px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
+
         .productos-desc ul {
             list-style: none;
             padding: 0;
         }
+
         .productos-desc li {
-            padding: 6px 0 6px 24px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%23004b87" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>') left center no-repeat;
-            background-size: 18px;
-            color: #1e2a3a;
+            padding: 6px 0 6px 26px;
+            position: relative;
+            color: var(--text-main);
             font-size: 0.95rem;
             line-height: 1.4;
         }
+
+        .productos-desc li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--sena-blue-light);
+            font-weight: 800;
+        }
+
         .btn-formulario {
-            background: #ffcc00;
-            color: #004b87;
+            background: var(--sena-yellow);
+            color: var(--sena-blue);
             border: none;
             padding: 14px 24px;
-            border-radius: 60px;
+            border-radius: 50px;
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 0.95rem;
             cursor: pointer;
-            transition: 0.2s;
-            box-shadow: 0 2px 8px rgba(255, 204, 0, 0.4);
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(255, 204, 0, 0.3);
             text-align: center;
             text-decoration: none;
             display: inline-block;
             width: 100%;
-            max-width: 260px;
-            margin: 0 auto;
             letter-spacing: 0.3px;
         }
+
         .btn-formulario:hover {
-            background: #e6b800;
-            transform: scale(1.02);
-            box-shadow: 0 4px 14px rgba(255, 204, 0, 0.55);
+            background: var(--sena-yellow-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(255, 204, 0, 0.45);
         }
+
         .btn-wrap {
             text-align: center;
-            margin-top: 4px;
         }
 
-        /* --- RECURSOS (tarjetas) --- */
+        /* --- RECURSOS --- */
+        .recursos-titulo {
+            color: var(--sena-blue);
+            font-size: 1.4rem;
+            margin-bottom: 24px;
+            font-weight: 700;
+        }
+
         .recursos-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 24px;
-            margin-top: 12px;
-        }
-        .tarjeta-recurso {
-            background: #f8fafc;
-            border-radius: 24px;
-            padding: 28px 18px 22px 18px;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
-            border: 1px solid #e6eaef;
-            transition: 0.2s;
-        }
-        .tarjeta-recurso:hover {
-            border-color: #004b87;
-            box-shadow: 0 8px 24px rgba(0, 75, 135, 0.08);
-        }
-        .tarjeta-recurso .icono {
-            font-size: 3rem;
-            margin-bottom: 12px;
-            display: block;
-        }
-        .tarjeta-recurso h4 {
-            color: #004b87;
-            margin-bottom: 8px;
-            font-size: 1.1rem;
-        }
-        .tarjeta-recurso p {
-            color: #3d4a5a;
-            font-size: 0.9rem;
-            margin-bottom: 18px;
-        }
-        .tarjeta-recurso a {
-            background: #004b87;
-            color: white;
-            padding: 10px 24px;
-            border-radius: 60px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            display: inline-block;
-            transition: 0.2s;
-        }
-        .tarjeta-recurso a:hover {
-            background: #003366;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
         }
 
-        /* --- RESPONSIVE MENOR --- */
-        @media (max-width: 500px) {
-            .tab-btn {
-                font-size: 0.8rem;
-                padding: 10px 6px;
-                min-width: 50px;
+        .tarjeta-recurso {
+            background: #f8fafc;
+            border-radius: var(--radius-md);
+            padding: 28px 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+            border: 1px solid var(--border-color);
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .tarjeta-recurso:hover {
+            border-color: var(--sena-blue-light);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .tarjeta-recurso .icono {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+        }
+
+        .tarjeta-recurso h4 {
+            color: var(--sena-blue);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .tarjeta-recurso p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 16px;
+        }
+
+        .tarjeta-recurso a {
+            background: var(--sena-blue-light);
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.88rem;
+            display: inline-block;
+            transition: background 0.2s ease;
+        }
+
+        .tarjeta-recurso a:hover {
+            background: var(--sena-blue);
+        }
+
+        .recursos-footer {
+            margin-top: 32px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+        }
+
+        /* --- RESPONSIVE GENERAL --- */
+        @media (max-width: 600px) {
+            body {
+                padding: 8px;
+            }
+            .app {
+                border-radius: 16px;
             }
             .panel {
-                padding: 16px;
-            }
-            .hora {
-                min-width: 65px;
-                font-size: 0.75rem;
-            }
-            .actividad {
-                font-size: 0.85rem;
-            }
-            .btn-descargar {
-                padding: 14px 28px;
-                font-size: 1rem;
-                width: 100%;
-                text-align: center;
-            }
-            .btn-formulario {
-                max-width: 100%;
+                padding: 20px 16px;
             }
             .inicio-titulo {
-                font-size: 1.3rem;
+                font-size: 1.5rem;
             }
             .inicio-titulo span {
                 font-size: 0.95rem;
+            }
+            .tab-btn {
+                font-size: 0.85rem;
+                padding: 10px 10px;
+                min-width: 75px;
             }
         }
     </style>
@@ -367,9 +442,8 @@
         <!-- PANEL DÍA 1 -->
         <div class="panel" id="panel-dia1">
             <div class="dia-grid">
-                <!-- columna izquierda: horario -->
                 <div class="col-horario">
-                    <h3>⏰ Horario - Día 1 (6 de julio)</h3>
+                    <h3>⏰ Horario - Día 1 (24 de septiembre)</h3>
                     <div class="horario-item"><span class="hora">08:00 - 08:45</span><span class="actividad">Apertura y socialización Bienestar</span></div>
                     <div class="horario-item"><span class="hora">08:45 - 10:00</span><span class="actividad">Presentación novedades desarrollo curricular</span></div>
                     <div class="horario-item"><span class="hora">10:00 - 10:20</span><span class="actividad">Receso</span></div>
@@ -380,7 +454,6 @@
                     <div class="horario-item"><span class="hora">16:00 - 16:30</span><span class="actividad">Receso</span></div>
                     <div class="horario-item"><span class="hora">16:30 - 18:00</span><span class="actividad">Revisión y formulación de proyectos formativos</span></div>
                 </div>
-                <!-- columna derecha: productos -->
                 <div class="col-productos">
                     <div class="productos-desc">
                         <h3>📋 Productos esperados</h3>
@@ -394,7 +467,7 @@
                         </ul>
                     </div>
                     <div class="btn-wrap">
-                        <a href="https://forms.gle/17zmMwxZhNEdeeaK7" target="_blank" class="btn-formulario">📝 Abrir formulario</a>
+                        <a href="https://forms.gle/NeAMX2ECBbsgNBM67" target="_blank" class="btn-formulario">📝 Abrir formulario</a>
                     </div>
                 </div>
             </div>
@@ -404,7 +477,7 @@
         <div class="panel" id="panel-dia2">
             <div class="dia-grid">
                 <div class="col-horario">
-                    <h3>⏰ Horario - Día 2 (7 de julio)</h3>
+                    <h3>⏰ Horario - Día 2 (25 de septiembre)</h3>
                     <div class="horario-item"><span class="hora">08:00 - 09:45</span><span class="actividad">Revisión y asesoría de recursos didácticos / integración de guías</span></div>
                     <div class="horario-item"><span class="hora">09:45 - 10:15</span><span class="actividad">Receso</span></div>
                     <div class="horario-item"><span class="hora">10:15 - 12:00</span><span class="actividad">Revisión y ajustes de recursos pedagógicos</span></div>
@@ -423,7 +496,7 @@
                         </ul>
                     </div>
                     <div class="btn-wrap">
-                        <a href="https://forms.gle/17zmMwxZhNEdeeaK7" target="_blank" class="btn-formulario">📝 Abrir formulario</a>
+                        <a href="https://forms.gle/NeAMX2ECBbsgNBM67" target="_blank" class="btn-formulario">📝 Abrir formulario</a>
                     </div>
                 </div>
             </div>
@@ -433,12 +506,11 @@
         <div class="panel" id="panel-dia3">
             <div class="dia-grid">
                 <div class="col-horario">
-                    <h3>⏰ Horario - Día 3 (8 de julio)</h3>
+                    <h3>⏰ Horario - Día 3 (28 de septiembre)</h3>
                     <div class="horario-item"><span class="hora">08:00 - 09:45</span><span class="actividad">Elaboración de documentos para comité de evaluación</span></div>
                     <div class="horario-item"><span class="hora">09:45 - 10:15</span><span class="actividad">Receso</span></div>
-                    <div class="horario-item"><span class="hora">10:15 - 13:00</span><span class="actividad">Revisión y ajustes de recursos pedagógicos</span></div
-                    <div class="horario-item"><span class="hora">13:00 - 16:00</span><span class="actividad">Celebración día del instructor</span></div>
-                   
+                    <div class="horario-item"><span class="hora">10:15 - 13:00</span><span class="actividad">Revisión y ajustes de recursos pedagógicos</span></div>
+                    <div class="horario-item"><span class="hora">13:00 - 16:00</span><span class="actividad">Elaboración de recursos didácticos</span></div>
                 </div>
                 <div class="col-productos">
                     <div class="productos-desc">
@@ -451,7 +523,7 @@
                         </ul>
                     </div>
                     <div class="btn-wrap">
-                        <a href="https://forms.gle/17zmMwxZhNEdeeaK7" target="_blank" class="btn-formulario">📝 Abrir formulario</a>
+                        <a href="https://forms.gle/NeAMX2ECBbsgNBM67" target="_blank" class="btn-formulario">📝 Abrir formulario</a>
                     </div>
                 </div>
             </div>
@@ -459,31 +531,34 @@
 
         <!-- PANEL RECURSOS -->
         <div class="panel" id="panel-recursos">
-            <h3 style="color:#004b87; margin-bottom: 20px;">📁 Recursos de apoyo</h3>
+            <h3 class="recursos-titulo">📁 Recursos de apoyo</h3>
             <div class="recursos-grid">
-                <!-- Tarjeta 1: Guía de desarrollo -->
                 <div class="tarjeta-recurso">
-                    <span class="icono">📄</span>
-                    <h4>Guía de desarrollo</h4>
-                    <p>&nbsp;</p>
+                    <div>
+                        <span class="icono">📄</span>
+                        <h4>Guía de desarrollo</h4>
+                        <p>Documento orientador de actividades</p>
+                    </div>
                     <a href="https://drive.google.com/file/d/1-IaQAuQvQNjLPpCIvbMVPj3r-sKcnwWC/view?usp=sharing" target="_blank">🔗 Abrir guía</a>
                 </div>
-                <!-- Tarjeta 2: material de apoyo -->
                 <div class="tarjeta-recurso">
-                    <span class="icono">📊</span>
-                    <h4>material de apoyo</h4>
-                    <p>&nbsp;</p>
+                    <div>
+                        <span class="icono">📊</span>
+                        <h4>Material de apoyo</h4>
+                        <p>Carpeta con plantillas e insumos</p>
+                    </div>
                     <a href="https://drive.google.com/drive/folders/13Xti1vzgL0il5Pgw-s1VvFErOOxONbJx?usp=sharing" target="_blank">🔗 Abrir carpeta</a>
                 </div>
-                <!-- Tarjeta 3: cronograma -->
                 <div class="tarjeta-recurso">
-                    <span class="icono">📘</span>
-                    <h4>cronograma</h4>
-                    <p>&nbsp;</p>
+                    <div>
+                        <span class="icono">📘</span>
+                        <h4>Cronograma</h4>
+                        <p>Planeación general detallada</p>
+                    </div>
                     <a href="https://docs.google.com/spreadsheets/d/1UZQ8pBBF39IjHcBsCZW8ZLGrJYAIdUx-/edit?usp=sharing&ouid=115413927529157131280&rtpof=true&sd=true" target="_blank">🔗 Abrir cronograma</a>
                 </div>
             </div>
-            <p style="margin-top: 28px; color: #5a6b7a; font-size: 0.9rem; text-align: center; border-top: 1px solid #e0e5ec; padding-top: 18px;">
+            <p class="recursos-footer">
                 ⚠️ Los enlaces de recursos se actualizarán próximamente.
             </p>
         </div>
@@ -502,12 +577,9 @@
             };
 
             function activateTab(tabId) {
-                // ocultar todos los paneles
                 Object.values(panels).forEach(p => p.classList.remove('active'));
-                // mostrar el panel seleccionado
                 if (panels[tabId]) panels[tabId].classList.add('active');
 
-                // actualizar botones
                 tabs.forEach(btn => {
                     btn.classList.remove('active');
                     if (btn.dataset.tab === tabId) {
@@ -517,18 +589,16 @@
             }
 
             tabs.forEach(btn => {
-                btn.addEventListener('click', function(e) {
+                btn.addEventListener('click', function() {
                     const tabId = this.dataset.tab;
                     if (tabId) activateTab(tabId);
                 });
             });
 
-            // (Opcional) activar por defecto el que tenga clase active
             const activeTab = document.querySelector('.tab-btn.active');
             if (activeTab) {
                 const tabId = activeTab.dataset.tab;
                 if (tabId && panels[tabId]) {
-                    // ya está activo, pero aseguramos el panel
                     Object.values(panels).forEach(p => p.classList.remove('active'));
                     panels[tabId].classList.add('active');
                 }
@@ -537,3 +607,5 @@
     </script>
 </body>
 </html>
+
+```
